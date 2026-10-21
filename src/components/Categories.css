@@ -1,0 +1,29 @@
+.cats { display: flex; flex-direction: column; gap: 12px; }
+
+.cat { position: relative; height: 84px; border-radius: var(--radius-lg); overflow: hidden; background: #1a1a1a; color: #fff; transition: height 0.5s var(--ease); }
+.cat.active { height: 420px; }
+.cat img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cat-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.25) 60%); }
+.cat:not(.active) .cat-shade { background: rgba(0, 0, 0, 0.5); }
+
+.cat-collapsed { position: absolute; inset: 0; display: flex; align-items: center; gap: 16px; padding: 0 20px; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; }
+.cat-label { flex: 1; font-size: 17px; font-weight: 500; }
+.cat-plus { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); transition: background-color 0.2s ease, color 0.2s ease; }
+.cat-collapsed:hover .cat-plus { background: #fff; color: #000; }
+
+.cat-body { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 28px 24px; animation: cat-in 0.5s var(--ease) 0.15s both; }
+.cat-count { padding: 5px 12px; border-radius: 999px; background: rgba(255, 255, 255, 0.85); color: var(--ink); font-size: 12px; font-weight: 600; }
+.cat-body h3 { margin: 4px 0 0; font-size: 26px; font-weight: 600; letter-spacing: -0.01em; }
+.cat-body p { margin: 0; max-width: 38ch; font-size: 15px; line-height: 1.55; color: rgba(255, 255, 255, 0.85); }
+.cat-link { min-height: 44px; margin-top: 10px; padding: 0 22px; font-size: 14px; }
+@keyframes cat-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@media (min-width: 900px) {
+  .cats { flex-direction: row; height: 540px; gap: 14px; }
+  .cat, .cat.active { height: auto; flex: 1 1 0; min-width: 0; transition: flex-grow 0.5s var(--ease); }
+  .cat.active { flex-grow: 5; }
+  .cat-collapsed { flex-direction: column; justify-content: space-between; align-items: center; padding: 24px 0; }
+  .cat-label { flex: 1; writing-mode: vertical-rl; transform: rotate(180deg); text-align: left; }
+  .cat-body { padding: 40px; }
+  .cat-body h3 { font-size: 34px; }
+}

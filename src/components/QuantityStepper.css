@@ -1,0 +1,7 @@
+.stepper { display: inline-flex; align-items: center; height: 52px; background: #fff; color: var(--ink); border: 1.5px solid var(--border-strong); border-radius: 999px; overflow: hidden; }
+.stepper button { width: 48px; height: 100%; display: grid; place-items: center; border: 0; background: none; color: inherit; cursor: pointer; transition: background-color 0.2s ease; }
+.stepper button:hover:not(:disabled) { background: #eef3fb; }
+.stepper button:disabled { opacity: 0.35; cursor: not-allowed; }
+.stepper output { min-width: 36px; text-align: center; font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.stepper-sm { height: 40px; }
+.stepper-sm button { width: 38px; }

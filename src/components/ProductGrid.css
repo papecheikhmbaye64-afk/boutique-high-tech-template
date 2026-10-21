@@ -1,0 +1,10 @@
+.pgrid { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.pgrid > li { min-width: 0; }
+
+@media (min-width: 640px) { .pgrid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .pgrid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+@media (min-width: 1100px) {
+  .pgrid-bento { grid-template-columns: repeat(6, 1fr); }
+  .pgrid-bento > li { grid-column: span 2; }
+  .pgrid-bento > li:nth-child(5n + 1), .pgrid-bento > li:nth-child(5n + 2) { grid-column: span 3; }
+}

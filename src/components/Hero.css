@@ -1,0 +1,12 @@
+.hero-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 20px; padding: 36px 24px 32px; }
+.hero-copy h1 { margin: 0; max-width: 13ch; font-size: clamp(36px, 6vw, 64px); line-height: 1.02; font-weight: 600; letter-spacing: -0.03em; }
+.hero-copy p { margin: 0 0 8px; max-width: 42ch; font-size: 16px; line-height: 1.6; color: #b8b8b8; }
+
+.hero-visual { min-height: 320px; background: #1a1a1a; overflow: hidden; }
+.hero-visual img { display: block; width: 100%; height: 100%; object-fit: cover; animation: gallery-fade 0.8s var(--ease); }
+
+@media (min-width: 900px) {
+  .hero-home { grid-template-columns: 1fr 1.05fr; }
+  .hero-copy { padding: 64px 56px; }
+  .hero-visual { min-height: 0; }
+}

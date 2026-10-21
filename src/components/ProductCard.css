@@ -1,0 +1,73 @@
+.pcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.pcard:hover, .pcard:focus-within { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+.pcard-media { position: relative; aspect-ratio: 4 / 4.4; border-radius: 20px; overflow: hidden; background: #e4e9f0; }
+.pcard-media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+.pcard:hover .pcard-media img { transform: scale(1.04); }
+
+.pcard-tag {
+  position: absolute; top: 14px; left: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+.pcard-go {
+  position: absolute; right: 14px; bottom: 14px;
+  display: grid; place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--ink); color: #fff;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.4s var(--ease);
+}
+.pcard:hover .pcard-go, .pcard:focus-within .pcard-go { opacity: 1; transform: none; }
+@media (hover: none) { .pcard-go { opacity: 1; transform: none; } }
+
+.pcard-body { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 18px 14px 12px; }
+.pcard-name { margin: 0; font-size: 21px; font-weight: 600; letter-spacing: -0.01em; }
+.pcard-link { color: inherit; text-decoration: none; }
+.pcard-link::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius-lg); } /* toute la carte est cliquable */
+.pcard-link:focus-visible { outline: none; }
+.pcard:has(.pcard-link:focus-visible) { outline: 3px solid var(--ink); outline-offset: 3px; }
+.pcard-summary { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+
+.pcard-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 16px; }
+.pcard-price { display: flex; align-items: baseline; gap: 8px; margin: 0; font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.pcard-price s { font-size: 14px; font-weight: 400; color: #8a93a1; }
+.pcard-cta {
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: var(--ink); color: #fff;
+  font-size: 13px; font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+.pcard:hover .pcard-cta { background: #2a2a2a; }
+
+/* Carte large noire : alterne avec les cartes claires sur l'accueil */
+@media (min-width: 1100px) {
+  .pcard-wide { flex-direction: row; background: var(--surface-dark); color: #fff; border-color: transparent; box-shadow: var(--shadow-md); }
+  .pcard-wide .pcard-media { flex: 1 1 50%; aspect-ratio: auto; min-height: 340px; }
+  .pcard-wide .pcard-body { flex: 1 1 50%; justify-content: flex-end; padding: 24px 22px 18px 28px; }
+  .pcard-wide .pcard-name { font-size: 28px; }
+  .pcard-wide .pcard-summary { color: #b8b8b8; }
+  .pcard-wide .pcard-price s { color: #8a8a8a; }
+  .pcard-wide .pcard-cta { background: #fff; color: #000; }
+  .pcard-wide:hover .pcard-cta { background: #ececec; }
+  .pcard-wide:has(.pcard-link:focus-visible) { outline-color: #fff; }
+}
